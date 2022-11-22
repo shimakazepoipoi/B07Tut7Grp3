@@ -6,4 +6,5 @@ interface Course {
     public String getCourseId();
     public List<Course> getPrerequisites();
     public Semester getSemester();
+    public Subject getSubject();
 }
