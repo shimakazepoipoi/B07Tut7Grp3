@@ -3,14 +3,21 @@ import com.google.firebase.database.*;
 import java.util.*;
 
 public class utscCourse implements Course{
-    private String course_id;
-    private List<utscCourse> prerequisites;
-    private Semester semester;
-    private Subject subject;
-
-    public utscCourse(DataSnapshot data) throws ExceptionMessage{
-        if(!data.exists()) throw new ExceptionMessage("Course not found!");
+    protected String course_id;
+    protected List<utscCourse> prerequisites;
+    protected Semester semester;
+    protected Subject subject;
+    protected utscCourse(){
+        // for initialization in add mode
+    }
+    public utscCourse(DataSnapshot data, String course_id) throws ExceptionMessage{
         //TODO: Continue implementation
+        if(!data.exists()) throw new ExceptionMessage("could not find database!");
+        if(!data.child("Courses").hasChild(course_id))
+            throw new ExceptionMessage("could not find course!");
+        this.course_id = course_id;
+
+
     }
 
     //Simple getter methods
