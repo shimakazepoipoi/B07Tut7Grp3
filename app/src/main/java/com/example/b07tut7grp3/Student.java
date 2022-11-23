@@ -1,7 +1,15 @@
 package com.example.b07tut7grp3;
 
+import java.util.HashSet;
+
 abstract class Student extends User{
     public abstract double getCreditsEarned();
+    protected String firstName, lastName;
+    protected HashSet<Course> coursesTaken;
+    protected HashSet<Course> plannedCourses;
+    protected int currentYear;
+    protected String currentSchool;
+
     public void addPlannedCourse(Course planned){
         //TODO: continue add course implementation
     }
@@ -18,4 +26,13 @@ abstract class Student extends User{
         MessageSystem success = new MessageSystem("added course " + completed);
         success.successMessage();
     }
+    // Getter methods
+    public int getCurrentYear(){
+        return currentYear;
+    }
+
+    public String getCurrentSchool(){
+        return currentSchool;
+    }
+
 }
