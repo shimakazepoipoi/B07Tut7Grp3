@@ -7,12 +7,13 @@ public class utscCourse implements Course{
     private List<utscCourse> prerequisites;
     private Semester semester;
     private Subject subject;
-    public utscCourse(){
 
-    }
     public utscCourse(DataSnapshot data) throws ExceptionMessage{
         if(!data.exists()) throw new ExceptionMessage("Course not found!");
+        //TODO: Continue implementation
     }
+
+    //Simple getter methods
     @Override
     public String getCourseId() {
         return course_id;
