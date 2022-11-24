@@ -11,15 +11,20 @@ public class utscCourse implements Course{
         // for initialization in add mode
     }
     public utscCourse(DataSnapshot data, String course_id) throws ExceptionMessage{
-        //TODO: Continue implementation
-        if(!data.exists()) throw new ExceptionMessage("could not find database!");
+        if(!data.exists() || !data.hasChild("Courses"))
+            throw new ExceptionMessage("could not find database!");
         if(!data.child("Courses").hasChild(course_id))
             throw new ExceptionMessage("could not find course!");
         this.course_id = course_id;
-
+        this.subject = Subject.valueOf((String)data.child("Courses").
+                child(course_id).child("Subject").getValue());
+        //TODO: Continue implementation
 
     }
+    /*
+    private List<utscCourse> getCourses(){
 
+    }*/
     //Simple getter methods
     @Override
     public String getCourseId() {
