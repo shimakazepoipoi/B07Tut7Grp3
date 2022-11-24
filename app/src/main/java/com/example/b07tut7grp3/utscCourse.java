@@ -4,11 +4,12 @@ import java.util.*;
 
 public class utscCourse implements Course{
     protected String course_id;
-    protected List<utscCourse> prerequisites;
+    protected List<String> prerequisites;
     protected List<Semester> semester;
     protected Subject subject;
     protected utscCourse(){
         // for initialization in add mode
+        //TODO: implement course addition
     }
     public utscCourse(DataSnapshot data, String course_id) throws ExceptionMessage{
         if(!data.exists() || !data.hasChild("Courses"))
@@ -16,15 +17,16 @@ public class utscCourse implements Course{
         if(!data.child("Courses").hasChild(course_id))
             throw new ExceptionMessage("could not find course!");
         this.course_id = course_id;
-        this.subject = Subject.valueOf((String)data.child("Courses").
-                child(course_id).child("Subject").getValue());
-        //TODO: Continue implementation
-
+        DataSnapshot courseInfo = data.child("Courses").child(course_id);
+        this.subject = Subject.valueOf((String)(courseInfo.child("Subject").getValue()));
+        prerequisites = new ArrayList<String>();
+        for(DataSnapshot i : courseInfo.child("Prerequisites").getChildren())
+            prerequisites.add((String)i.getValue());
+        semester = new ArrayList<Semester>();
+        for(DataSnapshot i : courseInfo.child("Semesters").getChildren())
+            semester.add(Semester.valueOf((String)i.getValue()));
     }
-    /*
-    private List<utscCourse> getCourses(){
 
-    }*/
     //Simple getter methods
     @Override
     public String getCourseId() {
@@ -32,10 +34,8 @@ public class utscCourse implements Course{
     }
 
     @Override
-    public List<Course> getPrerequisites() {
-        List<? extends Course> prereq = prerequisites;
-        //noinspection unchecked
-        return (List<Course>)prereq;
+    public List<String> getPrerequisites() {
+        return this.prerequisites;
     }
 
     @Override
@@ -46,5 +46,18 @@ public class utscCourse implements Course{
     @Override
     public Subject getSubject() {
         return subject;
+    }
+
+    @Override
+    public int hashCode() {
+        return course_id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this)return true;
+        if(obj == null || (!(obj instanceof utscCourse)))return false;
+        if(this.course_id.equals(((utscCourse) obj).getCourseId())) return true;
+        return false;
     }
 }

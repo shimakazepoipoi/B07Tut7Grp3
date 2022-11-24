@@ -11,5 +11,6 @@ class utscCourseModifier extends utscCourse {
     }
     public utscCourseModifier(){
         // initialization in add mode
+        //TODO: implement add mode
     }
 }
