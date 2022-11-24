@@ -5,7 +5,7 @@ import java.util.*;
 public class utscCourse implements Course{
     protected String course_id;
     protected List<utscCourse> prerequisites;
-    protected Semester semester;
+    protected List<Semester> semester;
     protected Subject subject;
     protected utscCourse(){
         // for initialization in add mode
@@ -34,7 +34,7 @@ public class utscCourse implements Course{
     }
 
     @Override
-    public Semester getSemester() {
+    public List<Semester> getSemester() {
         return semester;
     }
 

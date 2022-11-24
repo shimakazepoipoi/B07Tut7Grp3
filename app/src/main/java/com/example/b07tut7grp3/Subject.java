@@ -54,7 +54,7 @@ public enum Subject{
     THEATRE_AND_PERFORMANCE_STUDIES("Theatre and Performance Studies"),
     VISUAL_AND_PERFORMING_ARTS("Visual and Performing Arts"),
     WOMENS_AND_GENDER_STUDIES("Women's and Gender Studies");
-    private String subject;
+    private final String subject;
     private Subject(String subject){
         this.subject = subject;
     }
