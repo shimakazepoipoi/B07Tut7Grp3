@@ -12,12 +12,11 @@ public class utscCourse implements Course{
         //TODO: implement course addition
     }
     public utscCourse(DataSnapshot data, String course_id) throws ExceptionMessage{
-        if(!data.exists() || !data.hasChild("Courses"))
-            throw new ExceptionMessage("could not find database!");
-        if(!data.child("Courses").hasChild(course_id))
+
+        if(!data.hasChild(course_id))
             throw new ExceptionMessage("could not find course!");
         this.course_id = course_id;
-        DataSnapshot courseInfo = data.child("Courses").child(course_id);
+        DataSnapshot courseInfo = data.child(course_id);
         this.subject = Subject.valueOf((String)(courseInfo.child("Subject").getValue()));
         prerequisites = new ArrayList<String>();
         for(DataSnapshot i : courseInfo.child("Prerequisites").getChildren())
