@@ -18,5 +18,6 @@ public final class Admin extends User {
     }
     public void addCourse(Course course) throws ExceptionMessage{
         // TODO: implement addCourse (use setCourseID, setSemester, etc setter methods)
+        courseMod = new utscCourseModifier(this, course);
     }
 }
