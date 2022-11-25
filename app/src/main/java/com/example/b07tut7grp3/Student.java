@@ -9,6 +9,8 @@ abstract class Student extends User{
     protected HashSet<Course> plannedCourses;
     protected int currentYear;
     protected String currentSchool;
+    protected String email;
+    protected String username;
 
     public void addPlannedCourse(Course planned){
         //TODO: continue add course implementation

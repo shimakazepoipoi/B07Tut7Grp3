@@ -1,4 +1,4 @@
-package com.example.b07tut7grp3;
+package com.example.admintools;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.b07tut7grp3.ui.login.LoginActivity;
+import com.example.b07tut7grp3.R;
+import com.example.b07tut7grp3.admin_main;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
